@@ -3,7 +3,9 @@ import devLogger from "../logger/dev_logger";
 import fetch from "node-fetch";
 
 export const getTaskStatus = async (token_v2: string, taskId: string) => {
-	const res = await fetch("https://www.notion.so/api/v3/getTasks", {
+	const res = await /* TODO: JSFIX could not patch the breaking change:
+    req.body can no longer be a string*/
+    fetch("https://www.notion.so/api/v3/getTasks", {
 		headers: {
 			"content-type": "application/json",
 			cookie: `token_v2=${token_v2};`,
@@ -19,7 +21,9 @@ export const getTaskStatus = async (token_v2: string, taskId: string) => {
 };
 
 export const enqueueExportTask = async (token_v2: string, pageId: string) => {
-	const res = await fetch("https://www.notion.so/api/v3/enqueueTask", {
+	const res = await /* TODO: JSFIX could not patch the breaking change:
+    req.body can no longer be a string*/
+    fetch("https://www.notion.so/api/v3/enqueueTask", {
 		headers: {
 			"content-type": "application/json",
 			cookie: `token_v2=${token_v2};`,
